@@ -1,0 +1,14 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      LOG_LEVEL: INFO
+      DATABASE_URL: sqlite:////data/finance.db
+      SECRET_KEY: ${SECRET_KEY:-change-me-in-docker-compose}
+    volumes:
+      - finance_data:/data
+
+volumes:
+  finance_data:
